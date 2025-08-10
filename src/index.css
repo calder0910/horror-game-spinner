@@ -1,0 +1,122 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global Styles */
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #000000 100%);
+    overflow-x: hidden;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+}
+
+/* Horror-specific animations */
+@layer utilities {
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .animate-pulse-slow {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  .text-glow-red {
+    text-shadow: 0 0 10px #ef4444, 0 0 20px #dc2626, 0 0 30px #b91c1c;
+  }
+  
+  .text-glow-purple {
+    text-shadow: 0 0 10px #a855f7, 0 0 20px #9333ea, 0 0 30px #7c3aed;
+  }
+  
+  .text-glow-white {
+    text-shadow: 0 0 10px #ffffff, 0 0 20px #f3f4f6, 0 0 30px #d1d5db;
+  }
+  
+  .bg-horror-gradient {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d1b69 25%, #7f1d1d 50%, #2d1b69 75%, #1a1a1a 100%);
+  }
+  
+  .border-glow-red {
+    border: 2px solid #ef4444;
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.5), inset 0 0 20px rgba(239, 68, 68, 0.1);
+  }
+  
+  .border-glow-purple {
+    border: 2px solid #a855f7;
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.5), inset 0 0 20px rgba(168, 85, 247, 0.1);
+  }
+  
+  .backdrop-blur-horror {
+    backdrop-filter: blur(10px) saturate(100%) contrast(120%);
+  }
+}
+
+/* Custom keyframes */
+@keyframes float {
+  0%, 100% { 
+    transform: translateY(0px) rotate(0deg); 
+    opacity: 0.7;
+  }
+  33% { 
+    transform: translateY(-20px) rotate(120deg); 
+    opacity: 1;
+  }
+  66% { 
+    transform: translateY(10px) rotate(240deg); 
+    opacity: 0.8;
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #ef4444, #dc2626);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #dc2626, #b91c1c);
+}
+
+/* Selection styling */
+::selection {
+  background-color: rgba(239, 68, 68, 0.3);
+  color: #ffffff;
+}
+
+/* Focus styles for accessibility */
+button:focus-visible,
+select:focus-visible,
+input:focus-visible {
+  outline: 2px solid #a855f7;
+  outline-offset: 2px;
+}
+
+/* Horror font loading */
+@import url('https://fonts.googleapis.com/css2?family=Creepster&family=Nosifer&display=swap');
+
+.font-horror {
+  font-family: 'Creepster', cursive;
+}
+
+.font-horror-alt {
+  font-family: 'Nosifer', cursive;
+}
