@@ -370,7 +370,7 @@ ${concept}
           </div>
           <p className="text-lg md:text-xl text-red-200 font-bold tracking-wide" 
              style={{ textShadow: '0 0 10px #fecaca' }}>
-            ⚡ Generate Terrifying Game Elements ⚡
+            ⚡ Generate Terrifying Elements ⚡
           </p>
         </div>
 
