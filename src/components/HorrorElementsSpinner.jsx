@@ -672,7 +672,7 @@ ${concept}
                    textShadow: '0 0 20px #ef4444, 0 0 40px #dc2626',
                    fontFamily: 'serif'
                  }}>
-                ⚡ CREATED BY ⚡
+                💀 CREATED BY 💀
               </p>
               <p 
                 className="text-white text-2xl md:text-3xl font-bold tracking-wider cursor-pointer select-none transition-all hover:text-red-200"
@@ -686,11 +686,6 @@ ${concept}
               >
                 CALDER0910
               </p>
-              <div className="mt-2 flex justify-center space-x-2 md:space-x-4">
-                <span className="text-red-500 text-xl md:text-2xl animate-pulse">💀</span>
-                <span className="text-yellow-400 text-xl md:text-2xl animate-pulse">⚡</span>
-                <span className="text-red-500 text-xl md:text-2xl animate-pulse">💀</span>
-              </div>
               {creatorMode && (
                 <div className="mt-3 text-xs text-green-400 animate-pulse"
                      style={{ textShadow: '0 0 10px #22c55e' }}>
