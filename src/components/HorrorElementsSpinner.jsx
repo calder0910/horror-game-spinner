@@ -886,7 +886,6 @@ ${concept}
               </div>
             </div>
           )}
-        </div>
       </div>
 
       {/* Floating Watermark (Bottom Right) */}
