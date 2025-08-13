@@ -416,7 +416,7 @@ ${concept}
         </div>
 
         {/* Category Selector */}
-        {gameMode === 'manual' && (
+        {gameMode === 'random' && (
         <div className="mb-8 md:mb-10">
           <div className="relative max-w-2xl mx-auto px-4">
             <button
@@ -455,7 +455,7 @@ ${concept}
         )}
 
         {/* Stage Indicator */}
-        {gameMode === 'manual' && (
+        {gameMode === 'random' && (
         <div className="flex justify-center mb-8 md:mb-10 px-4">
           <div className="flex items-center space-x-3 md:space-x-6 bg-black rounded-full px-4 md:px-10 py-3 md:py-6 border-2 md:border-4 border-gray-700"
                style={{ boxShadow: '0 0 30px #00000080, inset 0 0 20px #ffffff10' }}>
