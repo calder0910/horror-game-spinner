@@ -13,6 +13,7 @@ const HorrorElementsSpinner = () => {
   const [particles, setParticles] = useState([]);
   const [creatorMode, setCreatorMode] = useState(false);
   const [promptCopied, setPromptCopied] = useState(false);
+  const [gameMode, setGameMode] = useState('random');
   
   const wheelRef = useRef(null);
   const audioContextRef = useRef(null);
@@ -42,123 +43,123 @@ const HorrorElementsSpinner = () => {
       color: '#8B1538',
       glowColor: '#FF6B6B',
       items: {
-  "Doors": ["creaky", "locked", "slammed shut", "slowly opening", "rotting wood", "rusted metal", "scratched surface", "bullet holes", "barricaded", "chained shut"],
-  "Windows": ["broken", "boarded up", "shadows behind", "cracked glass", "foggy condensation", "blood smeared", "curtains moving", "face peering through", "shattered completely", "glowing from inside"],
-  "Stairs": ["creaking", "blood stains", "leading to darkness", "broken steps", "spiral design", "carpet torn", "handrail missing", "floating steps", "infinite upward", "collapsing down"],
-  "Mirrors": ["cracked", "showing different reflections", "blood written messages", "foggy surface", "shattered pieces", "antique frames", "no reflection showing", "multiple reflections", "distorted images", "moving on their own"],
-  "Hallways": ["long", "narrow", "endless", "flickering lights", "paintings watching", "doors on both sides", "slanted floors", "getting smaller", "blood trail", "echoing footsteps"]
-}
+        "Doors": ["creaky", "locked", "slammed shut", "slowly opening"],
+        "Windows": ["broken", "boarded up", "shadows behind"],
+        "Stairs": ["creaking", "blood stains", "leading to darkness"],
+        "Mirrors": ["cracked", "showing different reflections"],
+        "Hallways": ["long", "narrow", "endless"]
+      }
     },
     '🪑 Furniture & Props': {
       color: '#654321',
       glowColor: '#D2691E',
       items: {
-  "Old furniture": ["rocking chairs", "antique beds", "dusty sofas", "broken tables", "tilted bookcases", "moth-eaten fabric", "creaking wood", "stained cushions", "missing legs", "cobweb covered"],
-  "Medical equipment": ["gurneys", "IV stands", "wheelchairs", "surgical tables", "oxygen tanks", "heart monitors", "bloody syringes", "rusty scalpels", "broken machines", "specimen jars"],
-  "Religious objects": ["crosses", "altars", "statues", "holy water fonts", "prayer books", "rosary beads", "candle holders", "church pews", "stained glass", "angel figures"],
-  "Children's toys": ["dolls", "teddy bears", "music boxes", "rocking horses", "toy cars", "building blocks", "stuffed animals", "marbles scattered", "broken crayons", "abandoned playground equipment"],
-  "Clocks": ["stopped", "ticking loudly", "backwards", "grandfather clocks", "digital displays", "melted faces", "multiple time zones", "alarm ringing", "pendulum swinging", "time moving fast"]
-}
+        "Old furniture": ["rocking chairs", "antique beds"],
+        "Medical equipment": ["gurneys", "IV stands", "wheelchairs"],
+        "Religious objects": ["crosses", "altars", "statues"],
+        "Children's toys": ["dolls", "teddy bears", "music boxes"],
+        "Clocks": ["stopped", "ticking loudly", "backwards"]
+      }
     },
     '📜 Documents & Texts': {
       color: '#2F2F2F',
       glowColor: '#708090',
       items: {
-  "Old newspapers": ["dark headlines", "yellowed pages", "torn edges", "coffee stained", "missing persons ads", "death notices", "strange articles", "bloodstained", "burnt corners", "illegible text"],
-  "Medical records": ["disturbing notes", "patient files", "X-ray images", "prescription bottles", "test results", "surgery reports", "psychological evaluations", "autopsy reports", "medical charts", "diagnosis papers"],
-  "Diary entries": ["revealing backstory", "handwritten pages", "tear stains", "desperate writing", "crossed out words", "different ink colors", "sketch drawings", "love letters", "confession notes", "final messages"],
-  "Warning signs": ["danger", "keep out", "no trespassing", "hazardous materials", "emergency exit", "wet floor", "high voltage", "quarantine zone", "authorized personnel only", "condemned building"],
-  "Graffiti": ["desperate messages", "spray painted walls", "carved words", "chalk writings", "blood written", "gang tags", "protest slogans", "phone numbers", "love declarations", "curse words"]
-}
+        "Old newspapers": ["dark headlines"],
+        "Medical records": ["disturbing notes"],
+        "Diary entries": ["revealing backstory"],
+        "Warning signs": ["danger", "keep out"],
+        "Graffiti": ["desperate messages"]
+      }
     },
     '🔧 Mechanical Objects': {
       color: '#1E3A8A',
       glowColor: '#60A5FA',
       items: {
-  "Old TVs": ["static", "disturbing images", "flickering screens", "broken antennas", "tube monitors", "multiple channels", "no signal", "ghostly faces", "security footage", "emergency broadcasts"],
-  "Radios": ["crackling", "mysterious voices", "AM/FM static", "vintage models", "emergency signals", "foreign languages", "distress calls", "music boxes playing", "white noise", "police scanners"],
-  "Elevators": ["broken", "trapped inside", "flickering lights", "emergency stops", "between floors", "creaking cables", "buttons not working", "doors stuck", "falling sensation", "going to wrong floors"],
-  "Generators": ["failing power", "diesel engines", "sparking wires", "fuel leaking", "loud humming", "backup systems", "emergency lighting", "overheating", "smoke coming out", "sudden shutdowns"],
-  "Security cameras": ["watching", "following", "red recording lights", "broken lenses", "static feed", "night vision mode", "motion detection", "multiple monitors", "zoom functions", "privacy violations"]
-}
+        "Old TVs": ["static", "disturbing images"],
+        "Radios": ["crackling", "mysterious voices"],
+        "Elevators": ["broken", "trapped inside"],
+        "Generators": ["failing power"],
+        "Security cameras": ["watching", "following"]
+      }
     },
     '🩸 Horror Specific Objects': {
       color: '#7F1D1D',
       glowColor: '#EF4444',
       items: {
-  "Bloodstains": ["fresh", "dried", "patterns", "splattered walls", "pooled floors", "handprints", "drag marks", "arterial spray", "coagulated drops", "footprint trails"],
-  "Bones & skulls": ["human remains", "animal skeletons", "scattered pieces", "cracked skulls", "jaw bones", "rib cages", "finger bones", "spine columns", "teeth marks", "burial sites"],
-  "Chains & restraints": ["imprisonment themes", "handcuffs", "rope bindings", "metal shackles", "leather straps", "ball and chain", "straightjackets", "ankle cuffs", "neck collars", "padlocks"],
-  "Surgical tools": ["sharp", "menacing", "scalpels", "bone saws", "forceps", "clamps", "needles", "drill bits", "scissors", "tweezers", "syringes", "medical implements"],
-  "Ritual objects": ["pentagrams", "candles", "altars", "sacrifice tables", "ceremonial knives", "occult symbols", "spell books", "crystal balls", "tarot cards", "voodoo dolls"]
-}
+        "Bloodstains": ["fresh", "dried", "patterns"],
+        "Bones & skulls": ["human remains"],
+        "Chains & restraints": ["imprisonment themes"],
+        "Surgical tools": ["sharp", "menacing"],
+        "Ritual objects": ["pentagrams", "candles", "altars"]
+      }
     },
     '🌿 Organic Objects': {
       color: '#14532D',
       glowColor: '#22C55E',
       items: {
-  "Dead plants": ["withered", "twisted", "black leaves", "dried stems", "thorny vines", "poison ivy", "dead flowers", "bare branches", "rotting roots", "fungal growth"],
-  "Spider webs": ["abandonment", "decay", "thick cobwebs", "corner accumulation", "dust covered", "insect remains", "multiple layers", "sticky strands", "broken patterns", "active spiders"],
-  "Mold & fungus": ["spreading", "consuming", "green patches", "black spots", "fuzzy texture", "wall climbing", "corner growth", "moisture damage", "toxic spores", "mushroom clusters"],
-  "Dead animals": ["crows", "rats", "cats", "roadkill", "decomposing", "skeletal remains", "maggot infested", "roadside casualties", "pet collars", "veterinary tables"]
-}
+        "Dead plants": ["withered", "twisted"],
+        "Spider webs": ["abandonment", "decay"],
+        "Mold & fungus": ["spreading", "consuming"],
+        "Dead animals": ["crows", "rats", "cats"]
+      }
     },
     '👹 Creature/Monster Visual Design': {
       color: '#581C87',
       glowColor: '#A855F7',
       items: {
-  "Zombies": ["decay", "missing limbs", "bloody", "rotting flesh", "exposed bones", "dragging feet", "torn clothes", "vacant eyes", "bite marks", "shambling walk"],
-  "Ghosts": ["translucent", "floating", "distorted", "cold breath", "flickering form", "pale skin", "flowing hair", "period clothing", "chain rattling", "phasing through walls"],
-  "Possessed humans": ["glowing eyes", "unnatural movements", "contorted faces", "speaking backwards", "levitating", "head spinning", "multiple voices", "scratched skin", "religious symbols", "demonic features"],
-  "Cultists": ["robes", "masks", "symbols", "ritual scars", "painted faces", "hooded figures", "ceremonial weapons", "chanting groups", "candle holders", "occult jewelry"],
-  "Mutated humans": ["extra limbs", "deformities", "oversized features", "skin lesions", "tumor growths", "asymmetrical bodies", "laboratory experiments", "radiation effects", "genetic splicing", "bio-hazard suits"]
-}
+        "Humanoid Creatures": ["zombies (decay, missing limbs, bloody)", "ghosts (translucent, floating, distorted)", "possessed humans (glowing eyes, unnatural movements)", "cultists (robes, masks, symbols)", "mutated humans (extra limbs, deformities)"],
+        "Animal-based Monsters": ["werewolves (fur, claws, fangs)", "giant spiders (multiple eyes, hairy legs)", "mutated dogs (rabid, skeletal, oversized)", "bats/flying creatures (wings, screeching)", "snakes/tentacles (slithering, constricting)"],
+        "Supernatural Entities": ["demons (horns, red skin, fire)", "shadow figures (dark silhouettes, no features)", "poltergeists (invisible, moving objects)", "spirits (ethereal, glowing, transparent)"],
+        "Mechanical/Hybrid": ["cyborg monsters (metal parts, wires exposed)", "possessed dolls (cracked faces, button eyes)", "robotic creatures (sparking, malfunctioning)"],
+        "Abstract/Cosmic Horror": ["eldritch beings (impossible geometry, too many eyes)", "flesh masses (pulsating, growing, organic)", "void creatures (darkness with eyes, formless)"]
+      }
     },
     '🖥️ UI/Interface Design': {
       color: '#C2410C',
       glowColor: '#FB923C',
       items: {
-  "HUD elements": ["health bars", "stamina", "inventory", "minimap display", "ammo counter", "objective markers", "interaction prompts", "status effects", "timer countdown", "resource meters"],
-  "Menu design": ["main menu", "pause", "settings", "save/load screens", "character selection", "difficulty options", "audio controls", "video settings", "key bindings", "credits screen"],
-  "Typography": ["horror fonts", "distressed text", "blood dripping letters", "scratched appearance", "gothic styles", "handwritten notes", "typewriter font", "glitch effects", "faded text", "carved inscriptions"],
-  "Icons & symbols": ["creepy UI elements", "skull decorations", "occult symbols", "warning icons", "status indicators", "inventory items", "weapon icons", "magic runes", "achievement badges", "progress markers"]
-}
+        "HUD elements": ["health bars", "stamina", "inventory"],
+        "Menu design": ["main menu", "pause", "settings"],
+        "Typography": ["horror fonts", "distressed text"],
+        "Icons & symbols": ["creepy UI elements"]
+      }
     },
     '✨ Visual Effects (VFX)': {
       color: '#A16207',
       glowColor: '#FDE047',
       items: {
-  "Particle systems": ["blood splatter", "smoke", "sparks", "dust clouds", "ash falling", "ember glow", "steam rising", "debris flying", "magic sparkles", "explosion fragments"],
-  "Magic/supernatural effects": ["energy", "portals", "auras", "spell casting", "magical shields", "teleportation", "levitation", "spirit manifestation", "dimensional rifts", "otherworldly glow"],
-  "Destruction effects": ["breaking glass", "crumbling walls", "collapsing structures", "shattering objects", "explosive damage", "fire spreading", "water flooding", "earth cracking", "metal bending", "wood splintering"],
-  "Weather particles": ["rain drops", "snow", "ash", "fog rolling", "wind gusts", "lightning strikes", "hail stones", "sandstorms", "mist formation", "storm clouds"]
-}
+        "Particle systems": ["blood splatter", "smoke", "sparks"],
+        "Magic/supernatural effects": ["energy", "portals", "auras"],
+        "Destruction effects": ["breaking glass", "crumbling walls"],
+        "Weather particles": ["rain drops", "snow", "ash"]
+      }
     },
     '🎭 Character Design (Non-Monster)': {
       color: '#BE185D',
       glowColor: '#F472B6',
       items: {
-  "Protagonist appearance": ["clothing", "equipment", "facial features", "hair styles", "body build", "age variation", "gender options", "ethnic diversity", "clothing damage", "survival gear"],
-  "NPCs design": ["survivors", "allies", "victims", "shop keepers", "quest givers", "background characters", "authority figures", "family members", "professionals", "elderly people"],
-  "Character animations": ["walking", "running", "fear reactions", "combat moves", "idle poses", "climbing", "jumping", "interaction gestures", "facial expressions", "death sequences"]
-}
+        "Protagonist appearance": ["clothing", "equipment"],
+        "NPCs design": ["survivors", "allies", "victims"],
+        "Character animations": ["walking", "running", "fear reactions"]
+      }
     },
-    '📐 Material/Texture Design': {
+    '🏗 Material/Texture Design': {
       color: '#92400E',
       glowColor: '#F59E0B',
       items: {
-  "Surface materials": ["rusty metal", "moldy wood", "cracked concrete", "peeling paint", "weathered stone", "corroded pipes", "stained fabric", "broken glass", "wet surfaces", "dusty floors"],
-  "Fabric textures": ["torn cloth", "old leather", "blood-stained", "moth-eaten", "faded colors", "rough canvas", "silk curtains", "velvet upholstery", "denim patches", "lace details"],
-  "Organic textures": ["skin", "flesh", "decay", "bark patterns", "leaf surfaces", "fur coating", "scale texture", "feather detail", "bone structure", "muscle fiber"]
-}
+        "Surface materials": ["rusty metal", "moldy wood", "cracked concrete"],
+        "Fabric textures": ["torn cloth", "old leather", "blood-stained"],
+        "Organic textures": ["skin", "flesh", "decay"]
+      }
     },
     '🎬 Post-Processing Effects': {
       color: '#6B21A8',
       glowColor: '#C084FC',
       items: {
-  "Screen filters": ["film grain", "vignetting", "chromatic aberration", "sepia tone", "black and white", "high contrast", "low saturation", "vintage look", "polaroid effect", "security camera filter"],
-  "Distortion effects": ["glitch", "static", "blur", "double vision", "fish eye lens", "barrel distortion", "pixel corruption", "scan lines", "VHS artifacts", "digital noise"]
-}
+        "Screen filters": ["film grain", "vignetting", "chromatic aberration"],
+        "Distortion effects": ["glitch", "static", "blur"]
+      }
     }
   };
 
@@ -374,7 +375,48 @@ ${concept}
           </p>
         </div>
 
+        {/* Mode Selector */}
+        <div className="mb-8 md:mb-10">
+          <div className="max-w-2xl mx-auto px-4">
+            <h3 className="text-center text-xl md:text-2xl font-bold text-white mb-4 tracking-wide"
+                style={{ textShadow: '0 0 15px #ef4444' }}>
+              🎮 SELECT YOUR MODE 🎮
+            </h3>
+            <div className="grid grid-cols-2 gap-4">
+              <button
+                onClick={() => setGameMode('random')}
+                className={`px-6 py-4 rounded-xl font-bold text-lg transition-all border-4 ${
+                  gameMode === 'random' 
+                    ? 'bg-gradient-to-r from-red-600 to-red-800 text-white border-red-400' 
+                    : 'bg-gradient-to-r from-gray-600 to-gray-800 text-gray-300 border-gray-500 hover:border-red-400'
+                }`}
+                style={{ 
+                  boxShadow: gameMode === 'random' ? '0 0 30px #ef444460' : '0 0 20px #00000040',
+                  textShadow: '0 0 10px #000000'
+                }}
+              >
+                🎲 RANDOM ALL
+              </button>
+              <button
+                onClick={() => setGameMode('manual')}
+                className={`px-6 py-4 rounded-xl font-bold text-lg transition-all border-4 ${
+                  gameMode === 'manual' 
+                    ? 'bg-gradient-to-r from-purple-600 to-purple-800 text-white border-purple-400' 
+                    : 'bg-gradient-to-r from-gray-600 to-gray-800 text-gray-300 border-gray-500 hover:border-purple-400'
+                }`}
+                style={{ 
+                  boxShadow: gameMode === 'manual' ? '0 0 30px #a855f760' : '0 0 20px #00000040',
+                  textShadow: '0 0 10px #000000'
+                }}
+              >
+                ⚙️ MANUAL
+              </button>
+            </div>
+          </div>
+        </div>
+
         {/* Category Selector */}
+        {gameMode === 'manual' && (
         <div className="mb-8 md:mb-10">
           <div className="relative max-w-2xl mx-auto px-4">
             <button
@@ -410,8 +452,10 @@ ${concept}
             )}
           </div>
         </div>
+        )}
 
         {/* Stage Indicator */}
+        {gameMode === 'manual' && (
         <div className="flex justify-center mb-8 md:mb-10 px-4">
           <div className="flex items-center space-x-3 md:space-x-6 bg-black rounded-full px-4 md:px-10 py-3 md:py-6 border-2 md:border-4 border-gray-700"
                style={{ boxShadow: '0 0 30px #00000080, inset 0 0 20px #ffffff10' }}>
@@ -452,6 +496,7 @@ ${concept}
             </div>
           </div>
         </div>
+        )}
 
         {/* Current Selections Display */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 mb-8 md:mb-10 px-4">
@@ -459,7 +504,7 @@ ${concept}
                style={{ boxShadow: '0 0 30px #a855f760, inset 0 0 20px #ffffff05' }}>
             <h3 className="text-purple-300 font-bold mb-2 md:mb-4 text-lg md:text-2xl tracking-wide flex items-center"
                 style={{ textShadow: '0 0 10px #a855f7' }}>
-              <span className="mr-2 md:mr-3">🏗️</span>
+              <span className="mr-2 md:mr-3">🗝️</span>
               <span className="hidden sm:inline">SELECTED OBJECT</span>
               <span className="sm:hidden">OBJECT</span>
             </h3>
@@ -483,7 +528,94 @@ ${concept}
           </div>
         </div>
 
+        {/* Manual Mode UI */}
+        {gameMode === 'manual' && (
+        <div className="flex flex-col items-center px-4 mb-8 md:mb-10">
+          <h3 className="text-center text-xl md:text-3xl font-bold text-white mb-6 md:mb-8 tracking-wide"
+              style={{ textShadow: '0 0 20px #a855f7' }}>
+            ⚙️ MANUAL SELECTION MODE
+          </h3>
+          
+          <div className="max-w-4xl w-full space-y-6">
+            {/* Category Selection */}
+            <div className="bg-gradient-to-br from-gray-900 to-black rounded-xl p-6 border-4 border-purple-600"
+                 style={{ boxShadow: '0 0 30px #a855f760' }}>
+              <label className="block text-purple-300 font-bold mb-4 text-lg"
+                     style={{ textShadow: '0 0 10px #a855f7' }}>
+                1️⃣ SELECT CATEGORY:
+              </label>
+              <select
+                value={selectedCategory}
+                onChange={(e) => {
+                  setSelectedCategory(e.target.value);
+                  setSelectedObject(null);
+                  setSelectedProperty(null);
+                }}
+                className="w-full px-4 py-3 bg-black text-white rounded-lg border-2 border-purple-400 font-bold text-lg"
+                style={{ textShadow: '0 0 8px #000000' }}
+              >
+                {Object.keys(horrorElements).map((category) => (
+                  <option key={category} value={category}>
+                    {category}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            {/* Object Selection */}
+            <div className="bg-gradient-to-br from-gray-900 to-black rounded-xl p-6 border-4 border-orange-600"
+                 style={{ boxShadow: '0 0 30px #fb923c60' }}>
+              <label className="block text-orange-300 font-bold mb-4 text-lg"
+                     style={{ textShadow: '0 0 10px #fb923c' }}>
+                2️⃣ SELECT OBJECT TYPE:
+              </label>
+              <select
+                value={selectedObject || ''}
+                onChange={(e) => {
+                  setSelectedObject(e.target.value);
+                  setSelectedProperty(null);
+                }}
+                className="w-full px-4 py-3 bg-black text-white rounded-lg border-2 border-orange-400 font-bold text-lg"
+                style={{ textShadow: '0 0 8px #000000' }}
+                disabled={!selectedCategory}
+              >
+                <option value="">-- Choose Object Type --</option>
+                {selectedCategory && Object.keys(horrorElements[selectedCategory].items).map((object) => (
+                  <option key={object} value={object}>
+                    {object}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            {/* Property Selection */}
+            <div className="bg-gradient-to-br from-gray-900 to-black rounded-xl p-6 border-4 border-green-600"
+                 style={{ boxShadow: '0 0 30px #22c55e60' }}>
+              <label className="block text-green-300 font-bold mb-4 text-lg"
+                     style={{ textShadow: '0 0 10px #22c55e' }}>
+                3️⃣ SELECT PROPERTY:
+              </label>
+              <select
+                value={selectedProperty || ''}
+                onChange={(e) => setSelectedProperty(e.target.value)}
+                className="w-full px-4 py-3 bg-black text-white rounded-lg border-2 border-green-400 font-bold text-lg"
+                style={{ textShadow: '0 0 8px #000000' }}
+                disabled={!selectedObject}
+              >
+                <option value="">-- Choose Property --</option>
+                {selectedObject && selectedCategory && horrorElements[selectedCategory].items[selectedObject]?.map((property) => (
+                  <option key={property} value={property}>
+                    {property}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+        </div>
+        )}
+
         {/* Spinning Wheel */}
+        {gameMode === 'random' && (
         <div className="flex flex-col items-center px-4">
           <div className="relative mb-6 md:mb-8">
             <h3 className="text-center text-xl md:text-3xl font-bold text-white mb-4 md:mb-6 tracking-wide"
@@ -616,6 +748,17 @@ ${concept}
             </div>
           </div>
 
+          {/* Instructions */}
+          <div className="mt-6 md:mt-8 text-center max-w-2xl px-4">
+            <p className="text-red-200 text-lg md:text-2xl font-bold tracking-wide"
+               style={{ textShadow: '0 0 15px #ef4444' }}>
+              {currentStage === 1 && '🎲 SPIN TO CHOOSE AN OBJECT TYPE'}
+              {currentStage === 2 && `🎲 NOW SPIN TO CHOOSE PROPERTIES FOR YOUR ${selectedObject?.toUpperCase()}`}
+            </p>
+          </div>
+        </div>
+        )}
+
           {/* Final Result */}
           {selectedObject && selectedProperty && (
             <div className="mt-8 md:mt-12 p-6 md:p-10 bg-gradient-to-br from-green-900 via-emerald-900 to-green-800 rounded-2xl md:rounded-3xl border-4 md:border-8 border-green-400 shadow-2xl max-w-4xl mx-4"
@@ -650,15 +793,6 @@ ${concept}
               </div>
             </div>
           )}
-
-          {/* Instructions */}
-          <div className="mt-6 md:mt-8 text-center max-w-2xl px-4">
-            <p className="text-red-200 text-lg md:text-2xl font-bold tracking-wide"
-               style={{ textShadow: '0 0 15px #ef4444' }}>
-              {currentStage === 1 && '🎲 SPIN TO CHOOSE AN OBJECT TYPE'}
-              {currentStage === 2 && `🎲 NOW SPIN TO CHOOSE PROPERTIES FOR YOUR ${selectedObject?.toUpperCase()}`}
-            </p>
-          </div>
 
           {/* Creator Watermark */}
           <div className="mt-8 md:mt-12 text-center px-4">
@@ -752,7 +886,6 @@ ${concept}
               </div>
             </div>
           )}
-        </div>
       </div>
 
       {/* Floating Watermark (Bottom Right) */}
