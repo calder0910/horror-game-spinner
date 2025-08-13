@@ -279,6 +279,13 @@ const HorrorElementsSpinner = () => {
     playSound(100, 200);
   };
 
+  // Manual mode reset function
+  const resetManual = () => {
+    setSelectedObject(null);
+    setSelectedProperty(null);
+    playSound(100, 200);
+  };
+
   const changeCategory = (category) => {
     setSelectedCategory(category);
     setCurrentStage(1);
@@ -498,7 +505,8 @@ ${concept}
         </div>
         )}
 
-        {/* Current Selections Display */}
+        {/* Current Selections Display - Only show for Random mode */}
+        {gameMode === 'random' && (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 mb-8 md:mb-10 px-4">
           <div className="bg-gradient-to-br from-gray-900 to-black rounded-xl md:rounded-2xl p-4 md:p-8 border-2 md:border-4 border-purple-600 shadow-2xl"
                style={{ boxShadow: '0 0 30px #a855f760, inset 0 0 20px #ffffff05' }}>
@@ -527,6 +535,7 @@ ${concept}
             </p>
           </div>
         </div>
+        )}
 
         {/* Manual Mode UI */}
         {gameMode === 'manual' && (
@@ -610,6 +619,51 @@ ${concept}
                 ))}
               </select>
             </div>
+          </div>
+
+          {/* Current Selections Display for Manual Mode - MOVED HERE */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 mt-8 mb-6 px-4 max-w-4xl w-full">
+            <div className="bg-gradient-to-br from-gray-900 to-black rounded-xl md:rounded-2xl p-4 md:p-8 border-2 md:border-4 border-purple-600 shadow-2xl"
+                 style={{ boxShadow: '0 0 30px #a855f760, inset 0 0 20px #ffffff05' }}>
+              <h3 className="text-purple-300 font-bold mb-2 md:mb-4 text-lg md:text-2xl tracking-wide flex items-center"
+                  style={{ textShadow: '0 0 10px #a855f7' }}>
+                <span className="mr-2 md:mr-3">🗝️</span>
+                <span className="hidden sm:inline">SELECTED OBJECT</span>
+                <span className="sm:hidden">OBJECT</span>
+              </h3>
+              <p className="text-white text-xl md:text-3xl font-bold tracking-wide break-words"
+                 style={{ textShadow: '0 0 15px #ffffff80' }}>
+                {selectedObject || '—'}
+              </p>
+            </div>
+            <div className="bg-gradient-to-br from-gray-900 to-black rounded-xl md:rounded-2xl p-4 md:p-8 border-2 md:border-4 border-orange-600 shadow-2xl"
+                 style={{ boxShadow: '0 0 30px #fb923c60, inset 0 0 20px #ffffff05' }}>
+              <h3 className="text-orange-300 font-bold mb-2 md:mb-4 text-lg md:text-2xl tracking-wide flex items-center"
+                  style={{ textShadow: '0 0 10px #fb923c' }}>
+                <span className="mr-2 md:mr-3">✨</span>
+                <span className="hidden sm:inline">SELECTED PROPERTY</span>
+                <span className="sm:hidden">PROPERTY</span>
+              </h3>
+              <p className="text-white text-xl md:text-3xl font-bold tracking-wide break-words"
+                 style={{ textShadow: '0 0 15px #ffffff80' }}>
+                {selectedProperty || '—'}
+              </p>
+            </div>
+          </div>
+
+          {/* Reset Button for Manual Mode */}
+          <div className="flex justify-center mt-4">
+            <button
+              onClick={resetManual}
+              className="flex items-center justify-center space-x-2 md:space-x-3 px-6 md:px-10 py-3 md:py-4 bg-gradient-to-r from-gray-600 to-gray-800 text-white rounded-full font-bold text-lg md:text-xl hover:from-gray-700 hover:to-gray-900 transition-all border-2 md:border-4 border-gray-500"
+              style={{ 
+                boxShadow: '0 0 30px #6b728040, inset 0 0 15px #ffffff10',
+                textShadow: '0 0 8px #000000'
+              }}
+            >
+              <RotateCcw className="w-5 h-5 md:w-6 md:h-6" />
+              <span className="tracking-wide">RESET SELECTIONS</span>
+            </button>
           </div>
         </div>
         )}
