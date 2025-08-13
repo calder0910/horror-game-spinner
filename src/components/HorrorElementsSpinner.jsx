@@ -380,7 +380,7 @@ ${concept}
           <div className="max-w-2xl mx-auto px-4">
             <h3 className="text-center text-xl md:text-2xl font-bold text-white mb-4 tracking-wide"
                 style={{ textShadow: '0 0 15px #ef4444' }}>
-              🎮 SELECT GAME MODE
+              🎮 SELECT YOUR MODE 🎮
             </h3>
             <div className="grid grid-cols-2 gap-4">
               <button
