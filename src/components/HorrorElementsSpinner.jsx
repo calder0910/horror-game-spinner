@@ -13,6 +13,7 @@ const HorrorElementsSpinner = () => {
   const [particles, setParticles] = useState([]);
   const [creatorMode, setCreatorMode] = useState(false);
   const [promptCopied, setPromptCopied] = useState(false);
+  const [gameMode, setGameMode] = useState('random');
   
   const wheelRef = useRef(null);
   const audioContextRef = useRef(null);
@@ -374,8 +375,49 @@ ${concept}
           </p>
         </div>
 
+{/* Mode Selector */}
+<div className="mb-8 md:mb-10">
+  <div className="max-w-2xl mx-auto px-4">
+    <h3 className="text-center text-xl md:text-2xl font-bold text-white mb-4 tracking-wide"
+        style={{ textShadow: '0 0 15px #ef4444' }}>
+      🎮 SELECT GAME MODE
+    </h3>
+    <div className="grid grid-cols-2 gap-4">
+      <button
+        onClick={() => setGameMode('random')}
+        className={`px-6 py-4 rounded-xl font-bold text-lg transition-all border-4 ${
+          gameMode === 'random' 
+            ? 'bg-gradient-to-r from-red-600 to-red-800 text-white border-red-400' 
+            : 'bg-gradient-to-r from-gray-600 to-gray-800 text-gray-300 border-gray-500 hover:border-red-400'
+        }`}
+        style={{ 
+          boxShadow: gameMode === 'random' ? '0 0 30px #ef444460' : '0 0 20px #00000040',
+          textShadow: '0 0 10px #000000'
+        }}
+      >
+        🎲 RANDOM ALL
+      </button>
+      <button
+        onClick={() => setGameMode('manual')}
+        className={`px-6 py-4 rounded-xl font-bold text-lg transition-all border-4 ${
+          gameMode === 'manual' 
+            ? 'bg-gradient-to-r from-purple-600 to-purple-800 text-white border-purple-400' 
+            : 'bg-gradient-to-r from-gray-600 to-gray-800 text-gray-300 border-gray-500 hover:border-purple-400'
+        }`}
+        style={{ 
+          boxShadow: gameMode === 'manual' ? '0 0 30px #a855f760' : '0 0 20px #00000040',
+          textShadow: '0 0 10px #000000'
+        }}
+      >
+        ⚙️ MANUAL
+      </button>
+    </div>
+  </div>
+</div>
+        
         {/* Category Selector */}
-        <div className="mb-8 md:mb-10">
+        {gameMode === 'manual' && (
+<div className="mb-8 md:mb-10">
           <div className="relative max-w-2xl mx-auto px-4">
             <button
               onClick={() => setShowCategoryDropdown(!showCategoryDropdown)}
@@ -410,9 +452,10 @@ ${concept}
             )}
           </div>
         </div>
-
+)}
         {/* Stage Indicator */}
-        <div className="flex justify-center mb-8 md:mb-10 px-4">
+        {gameMode === 'manual' && (
+<div className="flex justify-center mb-8 md:mb-10 px-4">
           <div className="flex items-center space-x-3 md:space-x-6 bg-black rounded-full px-4 md:px-10 py-3 md:py-6 border-2 md:border-4 border-gray-700"
                style={{ boxShadow: '0 0 30px #00000080, inset 0 0 20px #ffffff10' }}>
             <div className={`flex items-center space-x-2 md:space-x-4 px-3 md:px-8 py-2 md:py-4 rounded-full transition-all font-bold text-sm md:text-lg border-2 ${
@@ -452,7 +495,7 @@ ${concept}
             </div>
           </div>
         </div>
-
+)}
         {/* Current Selections Display */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 mb-8 md:mb-10 px-4">
           <div className="bg-gradient-to-br from-gray-900 to-black rounded-xl md:rounded-2xl p-4 md:p-8 border-2 md:border-4 border-purple-600 shadow-2xl"
@@ -484,7 +527,8 @@ ${concept}
         </div>
 
         {/* Spinning Wheel */}
-        <div className="flex flex-col items-center px-4">
+        {gameMode === 'random' && (
+<div className="flex flex-col items-center px-4">
           <div className="relative mb-6 md:mb-8">
             <h3 className="text-center text-xl md:text-3xl font-bold text-white mb-4 md:mb-6 tracking-wide"
                 style={{ textShadow: '0 0 20px #ef4444' }}>
@@ -615,7 +659,90 @@ ${concept}
               </button>
             </div>
           </div>
-
+)}
+  {/* Manual Mode UI */}
+{gameMode === 'manual' && (
+<div className="flex flex-col items-center px-4 mb-8 md:mb-10">
+  <h3 className="text-center text-xl md:text-3xl font-bold text-white mb-6 md:mb-8 tracking-wide"
+      style={{ textShadow: '0 0 20px #a855f7' }}>
+    ⚙️ MANUAL SELECTION MODE
+  </h3>
+  
+  <div className="max-w-4xl w-full space-y-6">
+    {/* Category Selection */}
+    <div className="bg-gradient-to-br from-gray-900 to-black rounded-xl p-6 border-4 border-purple-600"
+         style={{ boxShadow: '0 0 30px #a855f760' }}>
+      <label className="block text-purple-300 font-bold mb-4 text-lg"
+             style={{ textShadow: '0 0 10px #a855f7' }}>
+        1️⃣ SELECT CATEGORY:
+      </label>
+      <select
+        value={selectedCategory}
+        onChange={(e) => {
+          setSelectedCategory(e.target.value);
+          setSelectedObject(null);
+          setSelectedProperty(null);
+        }}
+        className="w-full px-4 py-3 bg-black text-white rounded-lg border-2 border-purple-400 font-bold text-lg"
+        style={{ textShadow: '0 0 8px #000000' }}
+      >
+        {Object.keys(horrorElements).map((category) => (
+          <option key={category} value={category}>
+            {category}
+          </option>
+        ))}
+      </select>
+    </div>
+    {/* Object Selection */}
+    <div className="bg-gradient-to-br from-gray-900 to-black rounded-xl p-6 border-4 border-orange-600"
+         style={{ boxShadow: '0 0 30px #fb923c60' }}>
+      <label className="block text-orange-300 font-bold mb-4 text-lg"
+             style={{ textShadow: '0 0 10px #fb923c' }}>
+        2️⃣ SELECT OBJECT TYPE:
+      </label>
+      <select
+        value={selectedObject || ''}
+        onChange={(e) => {
+          setSelectedObject(e.target.value);
+          setSelectedProperty(null);
+        }}
+        className="w-full px-4 py-3 bg-black text-white rounded-lg border-2 border-orange-400 font-bold text-lg"
+        style={{ textShadow: '0 0 8px #000000' }}
+        disabled={!selectedCategory}
+      >
+        <option value="">-- Choose Object Type --</option>
+        {selectedCategory && Object.keys(horrorElements[selectedCategory].items).map((object) => (
+          <option key={object} value={object}>
+            {object}
+          </option>
+        ))}
+      </select>
+    </div>
+  </div>
+</div>
+  {/* Property Selection */}
+    <div className="bg-gradient-to-br from-gray-900 to-black rounded-xl p-6 border-4 border-green-600"
+         style={{ boxShadow: '0 0 30px #22c55e60' }}>
+      <label className="block text-green-300 font-bold mb-4 text-lg"
+             style={{ textShadow: '0 0 10px #22c55e' }}>
+        3️⃣ SELECT PROPERTY:
+      </label>
+      <select
+        value={selectedProperty || ''}
+        onChange={(e) => setSelectedProperty(e.target.value)}
+        className="w-full px-4 py-3 bg-black text-white rounded-lg border-2 border-green-400 font-bold text-lg"
+        style={{ textShadow: '0 0 8px #000000' }}
+        disabled={!selectedObject}
+      >
+        <option value="">-- Choose Property --</option>
+        {selectedObject && selectedCategory && horrorElements[selectedCategory].items[selectedObject]?.map((property) => (
+          <option key={property} value={property}>
+            {property}
+          </option>
+        ))}
+      </select>
+    </div>
+)}
           {/* Final Result */}
           {selectedObject && selectedProperty && (
             <div className="mt-8 md:mt-12 p-6 md:p-10 bg-gradient-to-br from-green-900 via-emerald-900 to-green-800 rounded-2xl md:rounded-3xl border-4 md:border-8 border-green-400 shadow-2xl max-w-4xl mx-4"
