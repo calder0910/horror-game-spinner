@@ -37,7 +37,7 @@ const HorrorElementsSpinner = () => {
     generateParticles();
   }, []);
 
-  // Complete horror elements data
+  // Complete horror elements data (cleaned - removed 3 categories)
   const horrorElements = {
     '🚪 Architectural Objects': {
       color: '#8B1538',
@@ -115,16 +115,6 @@ const HorrorElementsSpinner = () => {
   "Mutated humans": ["extra limbs", "deformities", "oversized features", "skin lesions", "tumor growths", "asymmetrical bodies", "laboratory experiments", "radiation effects", "genetic splicing", "bio-hazard suits"]
 }
     },
-    '🖥️ UI/Interface Design': {
-      color: '#C2410C',
-      glowColor: '#FB923C',
-      items: {
-  "HUD elements": ["health bars", "stamina", "inventory", "minimap display", "ammo counter", "objective markers", "interaction prompts", "status effects", "timer countdown", "resource meters"],
-  "Menu design": ["main menu", "pause", "settings", "save/load screens", "character selection", "difficulty options", "audio controls", "video settings", "key bindings", "credits screen"],
-  "Typography": ["horror fonts", "distressed text", "blood dripping letters", "scratched appearance", "gothic styles", "handwritten notes", "typewriter font", "glitch effects", "faded text", "carved inscriptions"],
-  "Icons & symbols": ["creepy UI elements", "skull decorations", "occult symbols", "warning icons", "status indicators", "inventory items", "weapon icons", "magic runes", "achievement badges", "progress markers"]
-}
-    },
     '✨ Visual Effects (VFX)': {
       color: '#A16207',
       glowColor: '#FDE047',
@@ -135,30 +125,13 @@ const HorrorElementsSpinner = () => {
   "Weather particles": ["rain drops", "snow", "ash", "fog rolling", "wind gusts", "lightning strikes", "hail stones", "sandstorms", "mist formation", "storm clouds"]
 }
     },
-    '🎭 Character Design (Non-Monster)': {
-      color: '#BE185D',
-      glowColor: '#F472B6',
-      items: {
-  "Protagonist appearance": ["clothing", "equipment", "facial features", "hair styles", "body build", "age variation", "gender options", "ethnic diversity", "clothing damage", "survival gear"],
-  "NPCs design": ["survivors", "allies", "victims", "shop keepers", "quest givers", "background characters", "authority figures", "family members", "professionals", "elderly people"],
-  "Character animations": ["walking", "running", "fear reactions", "combat moves", "idle poses", "climbing", "jumping", "interaction gestures", "facial expressions", "death sequences"]
-}
-    },
-    '🏗 Material/Texture Design': {
+    '🗿 Material/Texture Design': {
       color: '#92400E',
       glowColor: '#F59E0B',
       items: {
   "Surface materials": ["rusty metal", "moldy wood", "cracked concrete", "peeling paint", "weathered stone", "corroded pipes", "stained fabric", "broken glass", "wet surfaces", "dusty floors"],
   "Fabric textures": ["torn cloth", "old leather", "blood-stained", "moth-eaten", "faded colors", "rough canvas", "silk curtains", "velvet upholstery", "denim patches", "lace details"],
   "Organic textures": ["skin", "flesh", "decay", "bark patterns", "leaf surfaces", "fur coating", "scale texture", "feather detail", "bone structure", "muscle fiber"]
-}
-    },
-    '🎬 Post-Processing Effects': {
-      color: '#6B21A8',
-      glowColor: '#C084FC',
-      items: {
-  "Screen filters": ["film grain", "vignetting", "chromatic aberration", "sepia tone", "black and white", "high contrast", "low saturation", "vintage look", "polaroid effect", "security camera filter"],
-  "Distortion effects": ["glitch", "static", "blur", "double vision", "fish eye lens", "barrel distortion", "pixel corruption", "scan lines", "VHS artifacts", "digital noise"]
 }
     }
   };
@@ -512,7 +485,7 @@ ${concept}
                style={{ boxShadow: '0 0 30px #a855f760, inset 0 0 20px #ffffff05' }}>
             <h3 className="text-purple-300 font-bold mb-2 md:mb-4 text-lg md:text-2xl tracking-wide flex items-center"
                 style={{ textShadow: '0 0 10px #a855f7' }}>
-              <span className="mr-2 md:mr-3">🗝️</span>
+              <span className="mr-2 md:mr-3">🗿</span>
               <span className="hidden sm:inline">SELECTED OBJECT</span>
               <span className="sm:hidden">OBJECT</span>
             </h3>
@@ -627,7 +600,7 @@ ${concept}
                  style={{ boxShadow: '0 0 30px #a855f760, inset 0 0 20px #ffffff05' }}>
               <h3 className="text-purple-300 font-bold mb-2 md:mb-4 text-lg md:text-2xl tracking-wide flex items-center"
                   style={{ textShadow: '0 0 10px #a855f7' }}>
-                <span className="mr-2 md:mr-3">🗝️</span>
+                <span className="mr-2 md:mr-3">🗿</span>
                 <span className="hidden sm:inline">SELECTED OBJECT</span>
                 <span className="sm:hidden">OBJECT</span>
               </h3>
