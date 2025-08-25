@@ -280,14 +280,14 @@ const HorrorElementsSpinner = () => {
     
     const concept = `${selectedCategory.split(' ')[0]} ${selectedObject} with "${selectedProperty}" property`;
     
-    return `Act as an expert horror game visual prompt engineer. You specialize in creating optimized prompts for AI image generation that produce high-quality, atmospheric horror game assets.
+    return `Act as an expert horror visual prompt engineer. You specialize in creating optimized prompts for AI image generation that produce high-quality, hyperrealistic horror imagery.
 Your task: Transform the given horror concept into a detailed, effective prompt for [MIDJOURNEY/DALLE/STABLE DIFFUSION].
 **Requirements:**
-- Maintain consistent dark, eerie horror game aesthetic
-- Include technical specifications for high quality output
+- Maintain dark, unsettling hyperrealistic aesthetic
+- Include technical specifications for photorealistic output
 - Add appropriate atmospheric and lighting descriptors
 - Incorporate negative prompts when necessary
-- Ensure the specific element properties are clearly represented
+- Ensure photographic realism and lifelike details
 **Input Concept:**
 ${concept}
 **Generate optimized prompt for:** DALL-E`;
